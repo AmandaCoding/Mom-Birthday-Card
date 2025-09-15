@@ -13,14 +13,14 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
       flex-direction: column;
       text-align: center;
+      padding: 20px;
     }
 
     h1 {
       font-size: 2.5em;
-      margin-bottom: 0.5em;
+      margin-bottom: 1em;
     }
 
     .flowers {
@@ -34,8 +34,8 @@
 
     .message {
       max-width: 90%;
-      margin-top: 20px;
-      font-size: 1.2em;
+      margin-top: 10px;
+      font-size: 1.1em;
       line-height: 1.6;
       display: none;
       opacity: 0;
@@ -57,41 +57,56 @@
       transform: scale(1.4) rotate(10deg);
       filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.8));
     }
+
+    .flower-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
   </style>
 </head>
 <body>
   <h1>🌸 Happy 40th Birthday Mom! 🌸</h1>
 
   <div class="flowers">
-    <div class="flower">🌸</div>
-    <div class="flower">🌷</div>
-    <div class="flower">🌺</div>
-    <div class="flower">🌹</div>
-    <div class="flower">💐</div>
-  </div>
-
-  <div class="message" id="msg">
-    Dear Mom,<br><br>
-    Happy 40th Birthday! 🎉💖 You’re the most amazing person in my life, and I can’t even put into words how much I love you. From the hostel, I miss you every single day—your voice, your hugs, your cooking, everything. Even though I’m away, my heart is always right there with you. 💕<br><br>
-    Thank you for being my strength, my comfort, and my best friend. Wishing you all the happiness in the world—you deserve nothing less. 💐<br><br>
-    Love always,<br>
-    Your daughter 🥰
+    <div class="flower-block">
+      <div class="flower">🌸</div>
+      <div class="message">Happy Birthday, Mom! You make my world brighter every single day. 💖</div>
+    </div>
+    <div class="flower-block">
+      <div class="flower">🌷</div>
+      <div class="message">I miss you so much from the hostel, but my heart is always with you. 🌷</div>
+    </div>
+    <div class="flower-block">
+      <div class="flower">🌺</div>
+      <div class="message">Thank you for all your love, care, and strength—you’re my role model. 🌺</div>
+    </div>
+    <div class="flower-block">
+      <div class="flower">🌹</div>
+      <div class="message">Your hugs and smile are my safe place. I can’t wait to see you again! 🌹</div>
+    </div>
+    <div class="flower-block">
+      <div class="flower">💐</div>
+      <div class="message">You deserve all the happiness in the world. Love you forever, Mom. 💐</div>
+    </div>
   </div>
 
   <script>
-    const flowers = document.querySelectorAll('.flower');
-    const msg = document.getElementById('msg');
-    let shown = false;
+    const flowerBlocks = document.querySelectorAll('.flower-block');
 
-    flowers.forEach(flower => {
+    flowerBlocks.forEach(block => {
+      const flower = block.querySelector('.flower');
+      const msg = block.querySelector('.message');
+      let shown = false;
+
       flower.addEventListener('click', () => {
         shown = !shown;
         if (shown) {
           msg.classList.add('show');
-          flowers.forEach(f => f.classList.add('bloom'));
+          flower.classList.add('bloom');
         } else {
           msg.classList.remove('show');
-          flowers.forEach(f => f.classList.remove('bloom'));
+          flower.classList.remove('bloom');
         }
       });
     });
