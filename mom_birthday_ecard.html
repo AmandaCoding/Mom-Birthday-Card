@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday Mom</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Playfair Display', serif;
+      background: linear-gradient(#EB9BC7, #DC90BD, #CC84B2, #AC6D9D, #6D3E72);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 0.5em;
+    }
+
+    .flowers {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      font-size: 3em;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .message {
+      max-width: 90%;
+      margin-top: 20px;
+      font-size: 1.2em;
+      line-height: 1.6;
+      display: none;
+      opacity: 0;
+      transform: scale(0.8);
+      transition: all 0.6s ease;
+    }
+
+    .message.show {
+      display: block;
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .flower {
+      transition: transform 0.6s ease, filter 0.6s ease;
+    }
+
+    .flower.bloom {
+      transform: scale(1.4) rotate(10deg);
+      filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.8));
+    }
+  </style>
+</head>
+<body>
+  <h1>🌸 Happy 40th Birthday Mom! 🌸</h1>
+
+  <div class="flowers">
+    <div class="flower">🌸</div>
+    <div class="flower">🌷</div>
+    <div class="flower">🌺</div>
+    <div class="flower">🌹</div>
+    <div class="flower">💐</div>
+  </div>
+
+  <div class="message" id="msg">
+    Dear Mom,<br><br>
+    Happy 40th Birthday! 🎉💖 You’re the most amazing person in my life, and I can’t even put into words how much I love you. From the hostel, I miss you every single day—your voice, your hugs, your cooking, everything. Even though I’m away, my heart is always right there with you. 💕<br><br>
+    Thank you for being my strength, my comfort, and my best friend. Wishing you all the happiness in the world—you deserve nothing less. 💐<br><br>
+    Love always,<br>
+    Your daughter 🥰
+  </div>
+
+  <script>
+    const flowers = document.querySelectorAll('.flower');
+    const msg = document.getElementById('msg');
+    let shown = false;
+
+    flowers.forEach(flower => {
+      flower.addEventListener('click', () => {
+        shown = !shown;
+        if (shown) {
+          msg.classList.add('show');
+          flowers.forEach(f => f.classList.add('bloom'));
+        } else {
+          msg.classList.remove('show');
+          flowers.forEach(f => f.classList.remove('bloom'));
+        }
+      });
+    });
+  </script>
+</body>
+</html>
